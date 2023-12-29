@@ -167,22 +167,23 @@ theme.addEventListener("click", () => {
 });
 // themani o'zgartirish
 function changeTheme() {
+  const setColorProp = (bg, text, lbg) => {
+    root.style.setProperty("--bg", bg);
+    root.style.setProperty("--text", text);
+    root.style.setProperty("--lbg", lbg);
+  };
+  const setAnotherProp = (moonSrc, modeNameContent, serchIconSrc, arrowSrc) => {
+    moon.src = `icons/moon-${moonSrc}.svg`;
+    modeName.textContent = `${modeNameContent} mode`;
+    searchIcon.src = `icons/search-${serchIconSrc}.svg`;
+    arrow.src = `icons/arrow-left-${arrowSrc}.svg`;
+  };
   if (mode === "dark") {
-    root.style.setProperty("--bg", "#202c37");
-    root.style.setProperty("--text", "#ffffff");
-    root.style.setProperty("--lbg", "#2b3945");
-    moon.src = "icons/moon-regular.svg";
-    modeName.textContent = "Light mode";
-    searchIcon.src = "icons/search-regular.svg";
-    arrow.src = "icons/arrow-left-regular.svg";
+    setColorProp("#202c37", "#ffffff", "#2b3945");
+    setAnotherProp("regular", "Light", "regular", "regular");
   } else {
-    root.style.setProperty("--bg", "#fafafa");
-    root.style.setProperty("--text", "#111517");
-    root.style.setProperty("--lbg", "#ffffff");
-    moon.src = "icons/moon-solid.svg";
-    modeName.textContent = "Dark mode";
-    searchIcon.src = "icons/search-solid.svg";
-    arrow.src = "icons/arrow-left-solid.svg";
+    setColorProp("#fafafa", "#111517", "#ffffff");
+    setAnotherProp("solid", "Dark", "solid", "solid");
   }
 }
 // dropdown menyu ochish yopish
